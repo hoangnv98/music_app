@@ -27,7 +27,7 @@ export const Colors = {
 };
 
 export const fontFamily = {
-  f1: 'SFUIDisplay-Medium',
-  f2: 'SFUIDisplay-Regular',
-  f3: 'SFUIDisplay-Bold',
+  f1: 'Roboto-Bold',
+  f2: 'Roboto-Medium',
+  f3: 'Roboto-Light',
 };

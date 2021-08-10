@@ -5,7 +5,7 @@ import styles from './styles';
 export default function HomeScreen() {
   return (
     <View style={styles.container}>
-      <View style={styles.header}></View>
+      <Image source={Images.img_idol} style={{width: 100, height: 100}} />
     </View>
   );
 }
