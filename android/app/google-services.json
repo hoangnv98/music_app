@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1093929106743",
+    "project_id": "crashonline-108b7",
+    "storage_bucket": "crashonline-108b7.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1093929106743:android:d84bd701e8841778fe6eb2",
+        "android_client_info": {
+          "package_name": "com.music_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1093929106743-a2j7gji1d24j0idlc4s2qkhqte25seh2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCRDs7yxyMDLjE4RYK6cxRQ14LADwe41yw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1093929106743-a2j7gji1d24j0idlc4s2qkhqte25seh2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

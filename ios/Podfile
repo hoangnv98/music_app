@@ -26,4 +26,6 @@ target 'Music_App' do
   post_install do |installer|
     react_native_post_install(installer)
   end
+
+  pod 'RNFBCrashlytics', :path => '../node_modules/@react-native-firebase/crashlytics'
 end

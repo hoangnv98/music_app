@@ -1,3 +1,4 @@
 import HomeScreen from './HomeScreen';
+import DetailMusic from './DetailMusic';
 
-export {HomeScreen};
+export {HomeScreen, DetailMusic};

@@ -1,11 +1,28 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {View, Text, Image, StatusBar, TouchableOpacity} from 'react-native';
 import {Images} from '@config/Images';
 import styles from './styles';
 import {TextInput} from 'react-native-paper';
+import {useNavigation} from '@react-navigation/native';
+import crashlytics, {
+  ReactNativeFirebaseCrashlyticsNativeHelper,
+} from '@react-native-firebase/crashlytics';
 export default function HomeScreen() {
   const [text, setText] = useState('');
-
+  const navigation = useNavigation();
+  useEffect(() => {
+    console.log('123');
+    // crashlytics().crash();
+  }, []);
+  const testCrash = () => {
+    try {
+      if (users) {
+      }
+    } catch (error) {
+      crashlytics().log(`${error} message : ${Date().toLocaleString()}`);
+      crashlytics().recordError(error);
+    }
+  };
   return (
     <View style={styles.container}>
       <StatusBar translucent backgroundColor="transparent" />
@@ -15,7 +32,7 @@ export default function HomeScreen() {
           <Text style={styles.txtApp}>Hyper Cast</Text>
         </View>
         <View style={styles.headerRight}>
-          <TouchableOpacity>
+          <TouchableOpacity onPress={() => testCrash()}>
             <Image source={Images.ic_search} style={styles.ic_search} />
           </TouchableOpacity>
           <TouchableOpacity>
