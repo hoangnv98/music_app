@@ -1,23 +1,16 @@
 import React from 'react';
-import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import {Text, TouchableOpacity, View} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
+import styles from './styles';
 
 export default function DetailMusic() {
   const navigation = useNavigation();
 
   return (
-    <View
-      style={{
-        alignItems: 'center',
-        justifyContent: 'center',
-        flex: 1,
-        backgroundColor: 'red',
-      }}>
+    <View style={styles.container}>
       <TouchableOpacity onPress={() => navigation.goBack()}>
-        <Text>123</Text>
+        <Text>Go back</Text>
       </TouchableOpacity>
     </View>
   );
 }
-
-const styles = StyleSheet.create({});

@@ -4,22 +4,40 @@ import {Images} from '@config/Images';
 import styles from './styles';
 import {TextInput} from 'react-native-paper';
 import {useNavigation} from '@react-navigation/native';
-import crashlytics, {
-  ReactNativeFirebaseCrashlyticsNativeHelper,
-} from '@react-native-firebase/crashlytics';
+import crashlytics from '@react-native-firebase/crashlytics';
+import messaging from '@react-native-firebase/messaging';
 export default function HomeScreen() {
   const [text, setText] = useState('');
   const navigation = useNavigation();
   useEffect(() => {
-    console.log('123');
-    // crashlytics().crash();
+    async function requestUserPermission() {
+      const authStatus = await messaging().requestPermission();
+      console.log('authStatus', authStatus);
+      const enabled =
+        authStatus === messaging.AuthorizationStatus.AUTHORIZED ||
+        authStatus === messaging.AuthorizationStatus.PROVISIONAL;
+
+      if (enabled) {
+        console.log('Authorization status:', authStatus);
+      }
+    }
+    requestUserPermission();
+  }, []);
+  useEffect(() => {
+    const unsubscribe = messaging().onMessage(async remoteMessage => {
+      Alert.alert('A new FCM message arrived!', JSON.stringify(remoteMessage));
+    });
+
+    return unsubscribe;
   }, []);
   const testCrash = () => {
+    console.log('111');
     try {
       if (users) {
       }
     } catch (error) {
       crashlytics().log(`${error} message : ${Date().toLocaleString()}`);
+      crashlytics().crash();
       crashlytics().recordError(error);
     }
   };
