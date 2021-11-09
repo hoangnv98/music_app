@@ -6,40 +6,45 @@ import {TextInput} from 'react-native-paper';
 import {useNavigation} from '@react-navigation/native';
 import crashlytics from '@react-native-firebase/crashlytics';
 import messaging from '@react-native-firebase/messaging';
+import {useSelector, useDispatch} from 'react-redux';
+import {increment} from 'src/slices/counterSlice';
 export default function HomeScreen() {
+  const count = useSelector(state => state.counter.value);
+  const dispatch = useDispatch();
   const [text, setText] = useState('');
   const navigation = useNavigation();
-  useEffect(() => {
-    async function requestUserPermission() {
-      const authStatus = await messaging().requestPermission();
-      console.log('authStatus', authStatus);
-      const enabled =
-        authStatus === messaging.AuthorizationStatus.AUTHORIZED ||
-        authStatus === messaging.AuthorizationStatus.PROVISIONAL;
+  // useEffect(() => {
+  //   async function requestUserPermission() {
+  //     const authStatus = await messaging().requestPermission();
+  //     console.log('authStatus', authStatus);
+  //     const enabled =
+  //       authStatus === messaging.AuthorizationStatus.AUTHORIZED ||
+  //       authStatus === messaging.AuthorizationStatus.PROVISIONAL;
 
-      if (enabled) {
-        console.log('Authorization status:', authStatus);
-      }
-    }
-    requestUserPermission();
-  }, []);
-  useEffect(() => {
-    const unsubscribe = messaging().onMessage(async remoteMessage => {
-      Alert.alert('A new FCM message arrived!', JSON.stringify(remoteMessage));
-    });
+  //     if (enabled) {
+  //       console.log('Authorization status:', authStatus);
+  //     }
+  //   }
+  //   requestUserPermission();
+  // }, []);
+  // useEffect(() => {
+  //   const unsubscribe = messaging().onMessage(async remoteMessage => {
+  //     Alert.alert('A new FCM message arrived!', JSON.stringify(remoteMessage));
+  //   });
 
-    return unsubscribe;
-  }, []);
+  //   return unsubscribe;
+  // }, []);
   const testCrash = () => {
-    console.log('111');
-    try {
-      if (users) {
-      }
-    } catch (error) {
-      crashlytics().log(`${error} message : ${Date().toLocaleString()}`);
-      crashlytics().crash();
-      crashlytics().recordError(error);
-    }
+    dispatch(increment());
+    // console.log('111');
+    // try {
+    //   if (users) {
+    //   }
+    // } catch (error) {
+    //   crashlytics().log(`${error} message : ${Date().toLocaleString()}`);
+    //   crashlytics().crash();
+    //   crashlytics().recordError(error);
+    // }
   };
   return (
     <View style={styles.container}>
@@ -78,6 +83,7 @@ export default function HomeScreen() {
           }
         />
       </View>
+      <Text style={{color: 'red'}}>{count}</Text>
     </View>
   );
 }
