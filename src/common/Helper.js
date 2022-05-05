@@ -1,6 +1,6 @@
 /**
  * All common function
- * @author truongnv
+ * @author hoangnv
  * @since 2021
  * @version 0.0.1
  */

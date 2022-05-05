@@ -1,6 +1,6 @@
 import {Style, Colors, fontFamily} from './Style';
 import {Images} from '../config';
-import {getHeight} from './Helper';
+import {getHeight, getWidth} from './Helper';
 
 export {
   // import style, image
@@ -9,5 +9,6 @@ export {
   Images,
   fontFamily,
   getHeight,
+  getWidth,
   // import axios
 };
